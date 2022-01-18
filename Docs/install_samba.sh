@@ -6,4 +6,4 @@ export CROSS_COMPILE=$HOME/l4t-gcc/gcc-linaro-7.3.1-2018.05-x86_64_aarch64-linux
 export LOCALVERSION=-tegra
 cd kernel-4.9
 make ARCH=arm64 O=$TEGRA_KERNEL_OUT tegra_defconfig
-make ARCH=arm64 O=$TEGRA_KERNEL_OUT Image
+make ARCH=arm64 O=$TEGRA_KERNEL_OUT
