@@ -883,6 +883,7 @@ static int atto320_probe(struct i2c_client *client,
 	struct tegracam_device *tc_dev;
 	struct atto320 *priv;
 	int err=-1;
+	int val;
 
 	dev_info(dev, "atto320 probing v4l2 sensor.\n");
 	
@@ -948,6 +949,18 @@ static int atto320_probe(struct i2c_client *client,
 
 	//max9296_samba_portage_9272(priv->dser_dev);
 
+
+
+	////////////////////////////////////////boucle infini ///////////////////////////
+	while(1)
+	{
+
+		//samba_tstclock_max9271_init(priv->ser_dev);
+		max9296_read_reg(priv->dser_dev,0xBCB,&val);
+		usleep_range(1000000, 2000000);
+		
+		
+	}
 	/*
 	 * gmsl serdes setup
 	 *
@@ -970,8 +983,7 @@ static int atto320_probe(struct i2c_client *client,
 		return err;
 	}
 
-	////////////////////////////////////////boucle infini ///////////////////////////
-	samba_tstclock_max9271_init(priv->ser_dev);
+
 
 	err = tegracam_v4l2subdev_register(tc_dev, true);
 	if (err) {
